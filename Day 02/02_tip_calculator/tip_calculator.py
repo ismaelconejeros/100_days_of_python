@@ -14,3 +14,4 @@ people = float(input('How many people to split the bill?\n'))
 total_per_people = round(total * (1+tipper) / people,2)
 
 print(f'Each person should pay: ${total_per_people}')
+print(globals())

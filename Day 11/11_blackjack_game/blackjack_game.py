@@ -19,15 +19,19 @@ def info():
     print(f'The cards of the dealer are: {dealer_cards} and the value is {dealer_value}')
     print(f'The cards of the player are: {player_cards} and the value is {player_value}')
 
-def new_card_init(role):
+def new_card_init():
     global player_value, dealer_value
     card = random.choice(card_deck)
-    if role == 'player':
-        player_cards.append(card)
-        player_value += card_value[card]
-    elif role == 'dealer':
-        dealer_cards.append(card)
-        dealer_value += card_value[card]
+    player_cards.append(card)
+    player_value += card_value[card]
+    shoe.remove(card)
+    card = random.choice(card_deck)
+    dealer_cards.append(card)
+    dealer_value += card_value[card]
+    shoe.remove(card)
+    card = random.choice(card_deck)
+    player_cards.append(card)
+    player_value += card_value[card]
     shoe.remove(card)
 
 def player_turn():
@@ -74,23 +78,21 @@ def check_win():
             again = input('Press ENTER to play again...')
 
 
-game_stage = 0 # 0-INIT, 1-PLAYER 2-DEALER 3-WINNER
+game_stage = 0
 game_on = True
 
 while game_on:
-    while game_stage == 0:
+    while game_stage == 0: #INIT GAME
         player_cards = []
         player_value = 0
         dealer_cards = []
         dealer_value = 0
         shoe = card_deck * 6
 
-        new_card_init('player')
-        new_card_init('dealer')
-        new_card_init('player')
+        new_card_init()
         game_stage = 1
 
-    while game_stage == 1:
+    while game_stage == 1: #PLAYER'S TURN
         info()
         check_win()
         if game_stage == 1:
@@ -100,7 +102,7 @@ while game_on:
             elif player_choose == 'n':
                 game_stage = 2
 
-    while game_stage == 2:
+    while game_stage == 2: #DEALER'S TURN
         dealer_turn()
         info()
         check_win()

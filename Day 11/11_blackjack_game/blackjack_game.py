@@ -31,14 +31,20 @@ def new_card_init():
     shoe.remove(card)
     card = random.choice(card_deck)
     player_cards.append(card)
-    player_value += card_value[card]
+    if player_value > 10 and card_value[card] == 11:
+        player_value += 1
+    else:
+        player_value += card_value[card]
     shoe.remove(card)
 
 def player_turn():
     global player_value, dealer_value
     card = random.choice(card_deck)
     player_cards.append(card)
-    player_value += card_value[card]
+    if player_value > 10 and card_value[card] == 11:
+        player_value += 1
+    else:
+        player_value += card_value[card]
     shoe.remove(card)
 
 def dealer_turn():

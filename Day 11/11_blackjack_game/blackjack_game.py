@@ -56,32 +56,30 @@ def dealer_turn():
 
 def check_win():
     global player_value, dealer_value, game_stage
+    def start_again():
+        global game_stage
+        game_stage = 0
+        again = input('Press ENTER to play again...')
     if game_stage == 1:
         if player_value == 21:
             print('\n *** PLAYER WINS ***\n')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
         elif player_value > 21:
             print('*** DEALER WINS ***')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
     else:
         if player_value == dealer_value:
             print('*** IT\'S A TIE ***')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
         elif dealer_value > 21:
             print('*** PLAYER WINS ***')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
         elif player_value > dealer_value:
             print('*** PLAYER WINS ***')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
         elif player_value < dealer_value:
             print('*** DEALER WINS ***')
-            game_stage = 0
-            again = input('Press ENTER to play again...')
+            start_again()
 
 
 game_stage = 0

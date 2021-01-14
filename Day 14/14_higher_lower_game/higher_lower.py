@@ -17,7 +17,7 @@ while game_on:
     while game_stage ==1: #FIRST
         left = random.choice(data)
         right = random.choice(data)
-        last = 0
+        last = {}
 
         clear()
         print(logo)

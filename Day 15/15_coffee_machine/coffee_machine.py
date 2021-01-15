@@ -2,12 +2,6 @@ from data import resources, MENU
 from art import front, head
 from replit import clear
 
-water_tank = resources['water']
-milk_tank = resources['milk']
-coffee_tank = resources['coffee']
-wallet = 0
-history = []
-
 def print_report():
     clear()
     print(head)
@@ -20,7 +14,6 @@ def print_report():
     print('The coffe machine log is: ')
     print(f'{history}\n')
     go_back = input('Press any key to go back.')
-
 
 def check_req(coffee):
     if water_tank >= MENU[coffee]['ingredients']['water'] and milk_tank >= MENU[coffee]['ingredients']['milk'] and coffee_tank >= MENU[coffee]['ingredients']['coffee']:
@@ -56,11 +49,17 @@ def insert_money(coffee):
     if confirm == 'y':
         wallet -= (balance - MENU[coffee]['cost'])
         status = 1
-        print(f"You have a refund of: ${balance - MENU[coffee]['cost']}")
+        print(f"You have a refund of: ${balance - MENU[coffee]['cost']:.2f}")
     elif confirm == 'n':
         wallet -= balance
-        print(f'You have a refund of: ${balance}')
+        print(f'You have a refund of: ${balance:.2f}')
         go_back = input('Press any key to go back.')
+
+water_tank = resources['water']
+milk_tank = resources['milk']
+coffee_tank = resources['coffee']
+wallet = 0
+history = []
 
 machine_on = True
 while machine_on:

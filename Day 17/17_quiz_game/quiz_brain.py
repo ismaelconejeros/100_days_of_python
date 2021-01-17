@@ -20,3 +20,6 @@ class QuizBrain:
         else:
             print("That's wrong.")
         print(f'You current score is {self.score}/{self.question_number}\n')
+
+class hola:
+    pass

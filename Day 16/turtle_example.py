@@ -10,7 +10,7 @@ while True:
     timmy.left(90)
     timmy.forward(100)
     timmy.left(90)
-    timmy.forward(100)
+    timmy_turtle.forward(100)
 
 my_screen = Screen()
 my_screen.exitonclick()

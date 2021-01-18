@@ -1,20 +1,8 @@
-from turtle import Turtle, Screen
+import turtle
 import random
 import time
 
-goal = Turtle()
-t1 = Turtle()
-t2 = Turtle()
-t3 = Turtle()
-t4 = Turtle()
-t5 = Turtle()
-t6 = Turtle()
-
-turtle_list = [t1, t2, t3, t4, t5, t6]
-available_colors = ['red', 'blue', 'green', 'purple', 'yellow', 'white']
-start_spots = [-210, -140, -70, 0, 70, 140]
-participants = {}
-winner = ""
+turtle.resizemode("user")
 
 def set_goal():
     goal.speed(3)
@@ -28,6 +16,7 @@ def set_goal():
 def color_change():
     for i in turtle_list:
         i.shape('turtle')
+        i.shapesize(3,3, 7)
         color_t = random.choice(available_colors)
         i.color(color_t)
         available_colors.remove(color_t)
@@ -52,24 +41,39 @@ def race():
             race_on = False
             winner = turt
 
-screen = Screen()
-screen.screensize(500, 500, 'lightgreen')
-bet = screen.textinput("TURTLE RACE", "Which color will you bet to be the winner?").lower()
+goal = turtle.Turtle()
+t1 = turtle.Turtle()
+t2 = turtle.Turtle()
+t3 = turtle.Turtle()
+t4 = turtle.Turtle()
+t5 = turtle.Turtle()
+t6 = turtle.Turtle()
 
-color_change()
-set_goal()
-set_turtles()
-time.sleep(1)
-race()
+screen = turtle.Screen()
+screen.screensize(500, 500, 'PaleGreen')
 
-if bet == participants[winner]:
-    print("YOU WIN!")
-    print(f"{bet} is the winner!")
-else:
-    print("YOU LOSE!")
-    print(f"You bet on {bet.title()}")
-    print(f"The winner is: {participants[winner].title()}")
+repeat = True
+while repeat:
+    turtle_list = [t1, t2, t3, t4, t5, t6]
+    available_colors = ['red', 'blue', 'green', 'purple', 'yellow', 'white']
+    start_spots = [-210, -140, -70, 0, 70, 140]
+    participants = {}
+    winner = ""
 
+    bet = screen.textinput("TURTLE RACE", f"Which color will you bet to be the winner?\n{available_colors}").lower()
+    color_change()
+    set_goal()
+    set_turtles()
+    time.sleep(1)
+    race()
+
+    if bet == participants[winner]:
+        result = screen.textinput("The result is:", f"YOU WIN!\nThe winner is the {bet.title()} Turtle\n\nPress Y to play again").lower()
+    else:
+        result = screen.textinput("The result is:", f"YOU LOSE!\nThe winner is the {participants[winner].title()} Turtle\n\nPress Y to play again").lower()
+    
+    if result != 'y':
+        repeat = False
 
 screen.exitonclick()
 

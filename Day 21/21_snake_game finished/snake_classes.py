@@ -8,6 +8,8 @@ class Snake:
         self.parts = []
         self.create_snake()
         self.head = self.parts[0]
+        self.head.color("Green")
+        self.head.shape("circle")
         self.score = 0
 
     def create_snake(self):
@@ -15,7 +17,7 @@ class Snake:
             snake = turtle.Turtle('square')
             snake.color('white')
             snake.penup()
-            snake.speed(7)
+            snake.speed(9)
             snake.goto(i)
             self.parts.append(snake)
 
@@ -54,7 +56,7 @@ class Snake:
 class Food(turtle.Turtle):
     def __init__(self):
         super().__init__()
-        self.shape('circle')
+        self.shape('turtle')
         self.penup()
         self.shapesize(0.5, 0.5)
         self.color('red')

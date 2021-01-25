@@ -9,4 +9,4 @@ nato_dict = {df2['letter'][i]:df2['code'][i] for i in range(len(df2['letter']))}
 while True:
     name = input("Enter a word: ").upper()
     nato_name = [nato_dict[i] for i in list(name)]
-    print([nato_dict[i] for i in list(name)])
+    print(nato_name)

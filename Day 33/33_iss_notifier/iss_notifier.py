@@ -73,7 +73,7 @@ while True:
     if is_night() and is_near():
         send_mail()
     else:
-        print('Not near')
+        print(f'Not near -> distance = ({iss_lng - MY_LONGITUDE:.2f}, {iss_lat - MY_LATITUDE:.2f})')
     time.sleep(60)
 
 

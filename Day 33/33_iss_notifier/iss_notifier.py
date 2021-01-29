@@ -17,29 +17,6 @@ SUN_API_PARAMS = {
     "formatted": 0
 }
 
-#.......API's
-#ISS
-my_request = requests.get(ISS_API)
-iss_req = my_request.json()
-iss_lat = float(iss_req['iss_position']['latitude'])
-iss_lng = float(iss_req['iss_position']['longitude'])
-
-#......MY PLACE
-my_request = requests.get(SUN_API, params = SUN_API_PARAMS)
-sun_req = my_request.json()
-sunrise = sun_req['results']['sunrise']
-sunset = sun_req['results']['sunset']
-
-#........CONVERT TIME
-my_hour = now.hour
-my_min = now.min
-
-sunrise_list = sunrise.split("T")[1].split(":")
-sunrise_hour = int(sunrise.split("T")[1].split(":")[0]) + GMT
-
-sunset_list = sunset.split("T")[1].split(":")
-sunset_hour = int(sunset.split("T")[1].split(":")[0]) + GMT
-
 #...........FUNCTIONS
 def is_night():
     night_thisnight = [i for i in range(sunset_hour, 24)]
@@ -70,6 +47,29 @@ def send_mail():
             msg=my_msg)
 
 while True:
+    #.......API's
+    #ISS
+    my_request = requests.get(ISS_API)
+    iss_req = my_request.json()
+    iss_lat = float(iss_req['iss_position']['latitude'])
+    iss_lng = float(iss_req['iss_position']['longitude'])
+
+    #......MY PLACE
+    my_request = requests.get(SUN_API, params = SUN_API_PARAMS)
+    sun_req = my_request.json()
+    sunrise = sun_req['results']['sunrise']
+    sunset = sun_req['results']['sunset']
+
+    #........CONVERT TIME
+    my_hour = now.hour
+    my_min = now.min
+
+    sunrise_list = sunrise.split("T")[1].split(":")
+    sunrise_hour = int(sunrise.split("T")[1].split(":")[0]) + GMT
+
+    sunset_list = sunset.split("T")[1].split(":")
+    sunset_hour = int(sunset.split("T")[1].split(":")[0]) + GMT
+
     if is_night() and is_near():
         send_mail()
     else:

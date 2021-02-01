@@ -13,4 +13,4 @@ for question in question_data:
 
 quiz = QuizInterface(question_bank)
 
-quiz2 = "test"
+quiz2 = "test2"

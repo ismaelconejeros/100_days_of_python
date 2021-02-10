@@ -12,8 +12,8 @@ TWITTER_PASSWORD = ""
 
 class InternetSpeedTwitterBot:
     def __init__(self):
-        self.down = 199.50
-        self.up = 56.24
+        self.down = 0
+        self.up = 0
         self.get_internet_speed()
 
     def get_internet_speed(self):

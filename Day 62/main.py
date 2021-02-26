@@ -20,20 +20,9 @@ class CafeForm(FlaskForm):
     power = SelectField('Power Socket Availability',choices=["✘", "🔌", "🔌🔌", "🔌🔌🔌", "🔌🔌🔌🔌", "🔌🔌🔌🔌🔌"], validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-# Exercise:
-# add: Location URL, open time, closing time, coffee rating, wifi rating, power outlet rating fields
-# make coffee/wifi/power a select element with choice of 0 to 5.
-#e.g. You could use emojis ☕️/💪/✘/🔌
-# make all fields required except submitW
-# use a validator to check that the URL field has a URL entered.
-# ---------------------------------------------------------------------------
-
-
-# all Flask routes below
 @app.route("/")
 def home():
     return render_template("index.html")
-
 
 @app.route('/add', methods=["GET", "POST"])
 def add_cafe():
@@ -55,7 +44,6 @@ def cafes():
         for row in csv_data:
             list_of_rows.append(row)
     return render_template('cafes.html', cafes=list_of_rows)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

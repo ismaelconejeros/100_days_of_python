@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Edit Movies{% endblock %}
+
+{% block content %}
+
+{% for movie in movies %}
+{% if id == movie.id %}
+<div class="content">
+  <h1 class="heading">{{ movie.title }}</h1>
+  <h3>{{movie.description}}</h3>
+    <br>
+    <p class="review">Last review: {{ movie.review }}</p>
+    <p class="rating">Last rating: {{ movie.rating }}</p>
+      <br><br>
+    
+  </div>
+  {{ wtf.quick_form(form, novalidate=True) }}
+
+  {% endif %}
+{% endfor %}
+{% endblock %}

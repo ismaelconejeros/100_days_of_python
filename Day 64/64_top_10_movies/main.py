@@ -86,7 +86,7 @@ def add():
         my_request = requests.get(url=TMDB_ENDPOINT, params={'api_key':TMDB_API_KEY, 'query':form.title.data})
         data = my_request.json()['results']
         return render_template("select.html", options=data)
-    return render_template('add.html', form=form)
+    return render_template('add.html', form=form) 
 
 @app.route("/select/<int:id>")
 def select(id):

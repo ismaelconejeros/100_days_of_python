@@ -107,6 +107,6 @@ def select(id):
     db.session.commit()
     return redirect(url_for('edit', id=new_movie.id))
 
-
+#test
 if __name__ == '__main__':
     app.run(debug=True)

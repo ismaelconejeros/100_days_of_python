@@ -62,7 +62,7 @@ def get_random_cafe():
     random_cafe = random.choice(cafes)
     return jsonify(cafe=random_cafe.to_dict())
 
-@app.route("/all")
+@app.route("/all.json")
 def get_all_cafes():
     cafes = db.session.query(Cafe).all()
     cafe_list = [cafe.to_dict() for cafe in cafes]

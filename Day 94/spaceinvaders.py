@@ -164,8 +164,4 @@ while game_on:
             enemy.write("GAME OVER", move=False, align="center", font=("Arial", 40, "bold"))
             game_on = False
 
-        
-
-
-
 screen.exitonclick()

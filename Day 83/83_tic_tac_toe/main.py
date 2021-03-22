@@ -58,7 +58,6 @@ def check_win():
         player2.color('orange')
         player2.write("Player 2 WINS", move=False, align="center", font=("Arial", 40, "bold"))
         game_on = False
-    print(player.used_squares)
     return game_on
 
 

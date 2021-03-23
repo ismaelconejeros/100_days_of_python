@@ -32,19 +32,34 @@ def computer_turn():
     print_board()
 
 def check():
+    global game_on
     player_1 = 0
+    player_2 = 0
     for winner_list in winners:
         for elem in winner_list:
-            if places[elem] is "X":
+            if places[elem] == "X":
                 player_1 += 1
-    if player_1 == 3:
-        print("Player 1 wins!")
+                if player_1 == 3:
+                    print("Player 1 wins!")
+                    game_on = False
+                    break
+            if places[elem] == "O":
+                player_2 += 1
+                if player_2 == 3:
+                    print("Player 2 wins!")
+                    game_on = False
+                    break
+            else:
+                player_1 = 0
+                player_2 = 0
 
 clear()
 print_board()
-for i in range(10):
+game_on = True
+while game_on:
     player_turn()
     check()
-    clear()
-    computer_turn()
+    if game_on:
+        clear()
+        computer_turn()
     
